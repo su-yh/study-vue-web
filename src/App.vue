@@ -3,10 +3,11 @@
 <template>
   <div class="app">
     <h2>你好啊</h2>
-    <Person/>
     <el-button type="primary" @click="login">点击登录按钮</el-button>
     <router-view></router-view>
   </div>
+
+  <Person/>
 </template>
 
 <script setup lang="ts">

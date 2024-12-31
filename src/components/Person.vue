@@ -1,35 +1,33 @@
 <template>
   <div class="person">
-    <h2>姓名：{{name}}</h2>
-    <h2>年龄：{{age}}</h2>
+    <h2>姓名：{{ name }}</h2>
+    <h2>年龄：{{ age }}</h2>
     <el-button type="primary" @click="changeName">修改姓名</el-button>
     <el-button type="primary" @click="changeAge">修改年龄</el-button>
     <el-button type="primary" @click="showTel">查看电话</el-button>
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: "Person",
-  data() {
-    return {
-      name: '张三',
-      age: 18,
-      tel: '1388888888'
-    }
-  },
-  methods: {
-    changeName() {
-      this.name = "zhange-san"
-    },
-    changeAge() {
-      this.age += 1;
-    },
-    showTel() {
-      alert(this.tel)
-    }
-  }
+<script setup lang="ts">
+let name = '张三'
+let age = 18
+let tel = '1388888888'
+
+const changeName = () => {
+  console.log("changeName")
+  name = 'zhange-san'
 }
+
+const changeAge = () => {
+  console.log("changeAge")
+  age += 1
+}
+
+const showTel = () => {
+  console.log("showTel")
+  alert(tel)
+}
+
 </script>
 
 <style scoped lang="scss">
