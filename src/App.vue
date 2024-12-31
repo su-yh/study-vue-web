@@ -1,57 +1,29 @@
 
 
 <template>
-  <div>
+  <div class="app">
+    <h2>你好啊</h2>
+    <Person/>
     <el-button type="primary" @click="login">点击登录按钮</el-button>
     <router-view></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
-import request from '@/utils/request.ts';
-import {onMounted} from "vue";
-import {reqLogin} from "@/api/user/index.ts";
 
-// 当组件挂载 完毕测试发一个请求
-if (false) {
-  console.log("使用原始request 请求")
-  onMounted(() => {
-    request({
-        url: '/user/login',
-        method: 'post',
-        data: {
-          username: 'admin',
-          password: 'admin',
-          code: 1
-        }
-      }
-    ).then(res => {
-      console.log(res)
-    })
-  })
-} else {
-  console.log("使用封装过的request 请求")
-  onMounted(() => {
-    reqLogin({username: 'admin', password: 'admin', code: 1})
-  })
-}
+import Person from '@/components/Person.vue'
 
 const login = async () => {
-  console.log("点击登录按钮")
-  let resData = await reqLogin({username: 'admin', password: 'admin', code: 1})
-  console.log("resData", resData)
-  console.log("resData.data", resData.data)
-  console.log("resData.code", resData.code)
-  console.log("resData.message", resData.message)
+  console.log("login")
 }
-
 
 </script>
 
 <style scoped lang="scss">
-div {
-  h1 {
-    color: red;
-  }
+.app {
+  background-color: #ddd;
+  box-shadow: 0 0 10px;
+  border-radius: 10px;
+  padding: 20px;
 }
 </style>
