@@ -11,6 +11,7 @@ pnpm create vite
   cd product                                            
   pnpm install                                          
   pnpm run dev
+  pnpm run suyh
 ```
 
 

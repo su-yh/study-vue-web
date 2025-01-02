@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="app">
     <h2>你好啊</h2>
@@ -8,17 +6,25 @@
   </div>
 
   <Person/>
+
+  <Car/>
+
 </template>
+
+
 
 <script setup lang="ts">
 
 import Person from '@/components/Person.vue'
+import Car from '@/components/Car.vue'
 
 const login = async () => {
   console.log("login")
 }
 
 </script>
+
+
 
 <style scoped lang="scss">
 .app {
