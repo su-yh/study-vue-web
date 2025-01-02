@@ -47,3 +47,7 @@ pnpm install pinia
 
 ![image-20241231110002676](README.assets/image-20241231110002676.png)
 
+
+
+路由器的工作模式
+

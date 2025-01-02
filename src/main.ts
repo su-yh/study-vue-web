@@ -7,6 +7,8 @@ import 'element-plus/dist/index.css'
 //@ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
+import router from "@/router";
+
 // 获取应用实例对象
 const app = createApp(App)
 // 安装element-plus 插件
@@ -14,6 +16,7 @@ app.use(ElementPlus, {
     locale: zhCn // element-plus 国际化配置
 });
 
+app.use(router)
 
 // 将应用挂载到挂载点上
 app.mount('#app')
