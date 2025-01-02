@@ -2,9 +2,9 @@
 // 创建一个路由器，并暴露出去
 import {createRouter,createWebHistory} from "vue-router";
 
-import Home from '@/src/components/Home.vue'
-import About from '@/src/components/About.vue'
-import News from '@/src/components/News.vue'
+import Home from '@/components/Home.vue'
+import About from '@/components/About.vue'
+import News from '@/components/News.vue'
 
 const router = createRouter({
   // 路由器的工作模式
