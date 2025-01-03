@@ -1,24 +1,17 @@
 <template>
   <div class="news">
-    <!-- 导航区 -->
     <ul>
       <li v-for="news in newsList" :key="news.id">
-        <!-- <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{news.title}}</RouterLink> -->
-        <RouterView :to="{
-          // path: '/news/detail',
+        <RouterLink :to="{
           name: 'xiang',
-          query: {
+          params: {
             id: news.id,
             title: news.title,
             content: news.content
           }
-        }">
-          {{news.title}}
-        </RouterView>
+        }">{{news.title}}</RouterLink>
       </li>
     </ul>
-
-    <!-- 展示区 -->
     <div class="news-content">
       <RouterView/>
     </div>
@@ -26,7 +19,7 @@
 </template>
 
 <script setup lang="ts" name="News">
-import {reactive} from 'vue'
+import {reactive, computed} from 'vue'
 import {RouterView} from 'vue-router'
 
 let newsList = reactive([

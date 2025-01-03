@@ -1,6 +1,5 @@
-
 // 创建一个路由器，并暴露出去
-import {createRouter,createWebHistory} from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 
 import Home from '@/pages/Home.vue'
 import About from '@/pages/About.vue'
@@ -15,11 +14,11 @@ const router = createRouter({
       name: 'zhuye',
       path: '/home',
       component: Home
-    },{
+    }, {
       name: 'guanyu',
       path: '/about',
       component: About
-    },{
+    }, {
       name: 'xinwen',
       path: '/news',
       component: News,
@@ -27,11 +26,19 @@ const router = createRouter({
         {
           name: 'xiang',
           // 这里不能以 '/' 开头
-          path: 'detail',
-          component: Detail
+          path: 'detail/:id/:title/:content',
+          component: Detail,
+          // props: true
+          props(route) {
+            console.log('params', route)
+            return route.params
+          }
         }
       ]
-    },
+    }, {
+      path: '/',
+      redirect: '/home'
+    }
   ]
 })
 
