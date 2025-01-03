@@ -25,6 +25,8 @@ const router = createRouter({
       component: News,
       children: [
         {
+          name: 'xiang',
+          // 这里不能以 '/' 开头
           path: 'detail',
           component: Detail
         }
