@@ -2,18 +2,18 @@
   <div class="talk">
     <button @click="getLoveTalk">获取一句土味情话</button>
     <ul>
-      <li v-for="talk in talkList" :key="talk.id">{{ talk.title }}</li>
+      <li v-for="talk in talkStore.talkList" :key="talk.id">{{ talk.title }}</li>
     </ul>
   </div>
 </template>
 
 
 <script setup lang="ts">
+import {useTalkStore} from "@/store/loveTalk.ts";
 import axios from "axios";
-import {reactive} from 'vue'
 import {nanoid} from 'nanoid'
 
-let talkList = reactive([{id: nanoid(), title: nanoid()}])
+const talkStore = useTalkStore()
 
 const getLoveTalk = async () => {
   let result = await axios.get("https://api.uomg.com/api/rand.qinghua?format=json")

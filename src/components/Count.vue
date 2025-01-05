@@ -21,11 +21,11 @@ const countStore = useCountStore();
 
 let n = ref(1)
 const add = () => {
-  countStore.sum += n.value
+  countStore.increment(n.value)
 }
 
 const minus = () => {
-  countStore.sum -= n.value
+  countStore.decrement(n.value)
 }
 </script>
 
