@@ -1,6 +1,6 @@
 <template>
   <div class="count">
-    <h2>当前求和为：{{ sum }}</h2>
+    <h2>当前求和为：{{ countStore.sum }}</h2>
     <select v-model.number="n">
       <option value="1">壹</option>
       <option value="2">贰</option>
@@ -15,15 +15,17 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
+import {useCountStore} from '@/store/count.ts'
 
-let sum = ref(0);
+const countStore = useCountStore();
+
 let n = ref(1)
 const add = () => {
-  sum.value += n.value
+  countStore.sum += n.value
 }
 
 const minus = () => {
-  sum.value -= n.value
+  countStore.sum -= n.value
 }
 </script>
 
