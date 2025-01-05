@@ -1,63 +1,30 @@
-<template>
-  <div class="app">
-    <Header/>
-    <!-- 导航区 -->
-    <div class="navigate">
-      <RouterLink to="/home" active-class="active">首页</RouterLink>
-      <RouterLink :to="{name: 'xinwen'}" active-class="active">新闻</RouterLink>
-      <RouterLink :to="{path: '/about'}" active-class="active">关于</RouterLink>
-    </div>
-    <!-- 展示区 -->
-    <div class="main-content">
-      <RouterView/>
-    </div>
-  </div>
-</template>
-
-
-
 <script setup lang="ts">
-import {RouterView, RouterLink} from 'vue-router'
-import Header from "@/components/Header.vue";
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-
+<template>
+  <div>
+    <a href="https://vite.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://vuejs.org/" target="_blank">
+      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
+  </div>
+  <HelloWorld msg="Vite + Vue" />
+</template>
 
 <style scoped>
-
-/* App */
-
-.navigate {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 100px;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
-.navigate a {
-  display: block;
-  text-align: center;
-  width: 90px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 10px;
-  background-color: gray;
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  letter-spacing: 5px;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
-.navigate a.active {
-  background-color: #64967E;
-  color: #ffc268;
-  font-weight: 900;
-  text-shadow: 0 0 1px black;
-  font-family: 微软雅黑;
-}
-.main-content {
-  margin: 0 auto;
-  margin-top: 30px;
-  border-radius: 10px;
-  width: 90%;
-  height: 400px;
-  border: 1px solid;
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
