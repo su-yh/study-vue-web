@@ -10,16 +10,11 @@
 
 <script setup lang="ts">
 import {useTalkStore} from "@/store/loveTalk.ts";
-import axios from "axios";
-import {nanoid} from 'nanoid'
 
 const talkStore = useTalkStore()
 
-const getLoveTalk = async () => {
-  let result = await axios.get("https://api.uomg.com/api/rand.qinghua?format=json")
-
-  let obj = {id: nanoid(), title: result.data.content}
-  talkList.unshift(obj)
+const getLoveTalk = () => {
+  talkStore.getTalk();
 }
 </script>
 
