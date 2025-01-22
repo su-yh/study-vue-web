@@ -8,7 +8,6 @@ npm i -g pnpm
 # 项目初始化
 pnpm create vite
 
-  cd product                                            
   pnpm install                                          
   pnpm run dev
   pnpm run suyh
