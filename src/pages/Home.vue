@@ -13,6 +13,8 @@
         highlight-current
         :check-strictly="true"
         :props="defaultProps"
+        @check-change="handleCheckChange"
+        lazy
     />
 
     <div class="buttons">
@@ -33,7 +35,56 @@ import { ElTree } from 'element-plus'
 import type Node from 'element-plus/es/components/tree/src/model/node'
 
 
+const handleCheckChange = (data: any, checked: boolean, indeterminate: any) => {
+  // console.log("suyh  - 复选框点击了")
+  // // if (data.disableChildrenSelect && checked) {
+  // if (checked) {
+  //   // 这里需要调用 el-tree 的方法来取消子节点的选中状态
+  //   // 假设 el-tree 实例可以通过 $refs 获取，且提供了 setChecked 方法
+  //   // 首先需要获取该节点的所有子节点，这里假设存在一个递归函数 getChildren 来获取子节点
+  //   const children = getChildren(data);
+  //   children.forEach((child: any) => {
+  //     // 取消子节点的选中状态
+  //     // 假设 el-tree 提供了 setChecked 方法，第一个参数是节点的 node-key，第二个参数是是否选中
+  //     child.checked = false;
+  //     child.disabled = true;
+  //     // this.$refs.tree.setChecked(child.id, false);
+  //   });
+  // }
 
+  let ids: number[] = [];
+  const children = getChildren(data);
+  children.forEach((child: any) => {
+    // 取消子节点的选中状态
+    // 假设 el-tree 提供了 setChecked 方法，第一个参数是节点的 node-key，第二个参数是是否选中
+    child.disabled = checked;
+    // child.checked = false;
+    console.log("suyh - child: ", child)
+
+    // child.setCheckedKeys([child.id], false);
+    ids.push(child.id)
+    // console.log("suyh - disabled: ", child.disabled)
+    // console.log("suyh - checked: ", child.checked)
+    // this.$refs.tree.setChecked(child.id, false);
+  });
+
+  // console.log("suyh - ids: ", ids)
+  // console.log("suyh - ", treeRef.value)
+  // treeRef.value!.setCheckedKeys(ids, true)
+  // treeRef.value!.setCheckedKeys([9, 10], true)
+};
+
+// 递归函数，用于获取节点的所有子节点
+const getChildren = (node:any) => {
+  let result:any = [];
+  if (node.children) {
+    node.children.forEach((child: any) => {
+      result.push(child);
+      result = result.concat(getChildren(child));
+    });
+  }
+  return result;
+};
 
 interface Tree {
   id: number
@@ -44,7 +95,34 @@ interface Tree {
 const treeRef = ref<InstanceType<typeof ElTree>>()
 
 const getCheckedNodes = () => {
-  console.log(treeRef.value!.getCheckedNodes(false, false))
+  let nodes = treeRef.value!.getCheckedNodes(false, false);
+
+  // suyh - 三种方式进行的for 循环
+  let mode = 1;
+  switch (mode) {
+    case 1:
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        console.log("suyh - node: ", node)
+        console.log("suyh - isLeaf: ", node.isLeaf)
+      }
+      break
+    case 2:
+      nodes.forEach((node) => {
+        console.log("suyh - node: ", node)
+      });
+      break
+    case 3:
+      for (const i in nodes) {
+        const node = nodes[i];
+        console.log("suyh - node: ", node)
+      }
+      break
+    default:
+      break
+  }
+
+  console.log("suyh - nodes: ", nodes)
 }
 const getCheckedKeys = () => {
   console.log(treeRef.value!.getCheckedKeys(false))
@@ -136,8 +214,6 @@ const data: Tree[] = [
   height: 100%;
 }
 .div-tree {
-  //background-color: #64967E;
-  //border-radius: 10px;
   border: 1px solid #000;
   margin: 8px;
 }
